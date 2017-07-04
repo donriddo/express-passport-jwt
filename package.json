@@ -1,9 +1,9 @@
 {
-  "name": "queencake-api",
+  "name": "property-aid-api",
   "version": "1.0.0",
-  "description": "Mega Queen cake's api",
-  "repository": "https://bitbucket.org/sauban/queen-cake-api",
-  "author": "Sauban Lawal",
+  "description": "A property management project.",
+  "repository": "https://bitbucket.org/eidetic/property-aid-api",
+  "author": "Eidetic Team",
   "license": "MIT",
   "scripts": {
     "start": " NODE_ENV=development PORT=3040 DEBUG=dev nodemon index.js",
@@ -15,6 +15,7 @@
     "body-parser": "1.15.2",
     "debug": "^2.6.1",
     "express": "4.14.0",
+    "mongoose": "^4.11.1",
     "morgan": "^1.8.1",
     "rotating-file-stream": "^1.1.9"
   },

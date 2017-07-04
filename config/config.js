@@ -10,6 +10,14 @@
   }
 })
 
+let settings;
+
+if (process.env.NODE_ENV === 'production') {
+  settings = require('./env/production');
+} else {
+  settings = require('./env/development');
+}
+
 module.exports = {
   env: process.env.NODE_ENV,
   logger: {
@@ -18,6 +26,7 @@ module.exports = {
   },
   server: {
     port: Number(process.env.PORT)
-  }
+  },
+  settings: settings
   // ...
 }
