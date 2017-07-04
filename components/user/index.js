@@ -1,6 +1,6 @@
 const express = require('express');
 const ctrl = require('./controller');
-// const isPerson = require('../../middlewares/isPerson');
+const isAuthenticated = require('../../middlewares/isAuthenticated');
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.route('/')
   .post(ctrl.create)
   .get(ctrl.list);
 router.route('/:id')
-  // .all(isPerson)
+  .all(isAuthenticated)
   .get(ctrl.read)
   .put(ctrl.update);
 
