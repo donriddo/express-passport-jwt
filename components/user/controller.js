@@ -27,7 +27,7 @@ module.exports = {
     });
   },
   update: function (req, res) {
-    User.update({ _id: req.params.id }, req.body).then(user => {
+    User.update({ _id: req.params.id }, req.body, { runValidators: true }).then(user => {
       return res.status(200).json(user);
     }).catch(err => {
       console.log(err);

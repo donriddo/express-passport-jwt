@@ -18,7 +18,8 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.11.1",
     "morgan": "^1.8.1",
-    "rotating-file-stream": "^1.1.9"
+    "rotating-file-stream": "^1.1.9",
+    "validator": "^7.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

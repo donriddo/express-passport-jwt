@@ -1,4 +1,8 @@
+const validator = require('validator');
 module.exports = exports = function verificationHashPlugin(schema, options) {
+  schema.path('email').validate(value => {
+    return validator.isEmail(value);
+  }, '{VALUE} is not a valid email', 'Invalid Email');
   schema.pre('save', function (next) {
     this.verificationHash = _.sampleSize(
       'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(''), 7
