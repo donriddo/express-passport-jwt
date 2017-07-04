@@ -1,16 +1,37 @@
 const compute = require('../../helpers/computeData');
+const User = require('./model')();
+
 module.exports = {
-	list: function (req, res){
-		return res.json([{
-			username: "Person",
-			id: "1"
-		}]);
-	},
-	get: function (req, res){
-		return res.send('Viewing user with ID: ' +  req.params.id);
-	},
-	sum5: function (req, res) {
-		var sum5 = compute.sum(5)(parseInt(req.params.num));
-		return res.send('The sum of 5 and ' + req.params.num + ' is ' + sum5);
-	}
+  create: function (req, res) {
+    User.create(req.body).then(user => {
+      return res.status(201).json(user);
+    }).catch(err => {
+      console.log(err);
+      return res.status(400).json(err);
+    });
+  },
+  read: function (req, res) {
+    User.findById(req.params.id).then(user => {
+      return res.status(200).json(user);
+    }).catch(err => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+  },
+  list: function (req, res) {
+    User.find().then(users => {
+      return res.status(200).json(users);
+    }).catch(err => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+  },
+  update: function (req, res) {
+    User.update({ _id: req.params.id }, req.body).then(user => {
+      return res.status(200).json(user);
+    }).catch(err => {
+      console.log(err);
+      return res.status(400).json(err);
+    })
+  }
 };
