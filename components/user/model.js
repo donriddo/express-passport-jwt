@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const genericPlugin = require('../../helpers/generic-plugin');
 const userPlugin = require('./plugin');
+
+mongoose.Promise = require('bluebird');
+
 module.exports = function () {
 
   const user = new mongoose.Schema({
