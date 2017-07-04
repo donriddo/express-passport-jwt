@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const genericPlugin = require('../../helpers/plugin');
+const genericPlugin = require('../../helpers/generic-plugin');
 const userPlugin = require('./plugin');
 module.exports = function () {
 
@@ -15,7 +15,7 @@ module.exports = function () {
 
     emailVerified: { type: Boolean, default: false }
   });
-  // user.plugin(genericPlugin);
+  user.plugin(genericPlugin);
   user.plugin(userPlugin);
   return mongoose.model('user', user);
 };
