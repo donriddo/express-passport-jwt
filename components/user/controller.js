@@ -12,7 +12,7 @@ module.exports = {
     });
   },
   read: function (req, res) {
-    User.findById(req.params.id).then(user => {
+    User.findById(req.params.id).where('isDeleted', false).then(user => {
       if (!user) return res.status(404).json({ message: 'User not found' });
       return res.status(200).json(user);
     }).catch(err => {
@@ -21,7 +21,7 @@ module.exports = {
     });
   },
   list: function (req, res) {
-    User.find().then(users => {
+    User.find({ isDeleted: false }).then(users => {
       return res.status(200).json(users);
     }).catch(err => {
       console.log(err);
@@ -29,7 +29,7 @@ module.exports = {
     });
   },
   update: function (req, res) {
-    User.findById(req.params.id).then(user => {
+    User.findById(req.params.id).where('isDeleted', false).then(user => {
       if (!user) return false;
       Object.keys(req.body).forEach(key => {
         user[key] = req.body[key];
