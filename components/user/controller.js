@@ -6,6 +6,8 @@ module.exports = {
       return res.status(201).json(user);
     }).catch(err => {
       console.log(err);
+      if (err.code === 11000)
+        return res.status(400).json({ message: "Validation error has occured", reason: "Email exists" });
       return res.status(400).json(err);
     });
   },

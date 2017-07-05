@@ -10,7 +10,7 @@ module.exports = function () {
 
     email: { type: String, required: true, unique: true },
 
-    password: { type: String, required: true, select: false },
+    password: { type: String, required: true },
 
     name: { type: String, required: true },
 

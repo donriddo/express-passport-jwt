@@ -9,7 +9,7 @@ passport.use(new LocalStrategy(
     passwordField: 'password'
   },
   function (email, password, done) {
-    User.findOne({ email: email, isDeleted: false }, '+password', function (err, user) {
+    User.findOne({ email: email, isDeleted: false }, function (err, user) {
       // console.log(user);
       if (err) { return done(err); }
       if (!user) {
